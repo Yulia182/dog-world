@@ -23,7 +23,6 @@ export const buildProducts = (products) => {
 
     if (item.category === "toy") {
       toyContainer.append(newDiv);
-
       newDiv.append(newImg, newName, newDesc, newPrice, addToCartButton);
     } else if (item.category === "food") {
       foodContainer.append(newDiv);
