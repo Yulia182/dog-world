@@ -1,3 +1,6 @@
+body {
+  min-height: 100vh;
+}
 img {
   width: 200px;
 }
@@ -12,9 +15,16 @@ img {
 .hidden {
   display: none;
 }
+.shopping-cart {
+  border: 1px solid black;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ed4c6c;
+}
 .surrounding-div {
   width: 300px;
-
   border: black solid 1px;
 }
 .category-container ul {
