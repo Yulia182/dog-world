@@ -16,12 +16,17 @@ img {
   display: none;
 }
 .shopping-cart {
-  border: 1px solid black;
   position: fixed;
+  padding: 10px;
+  border-radius: 20px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ed4c6c;
+}
+.shopping-cart ul div {
+  display: flex;
+  justify-content: space-between;
 }
 .surrounding-div {
   width: 300px;
@@ -31,6 +36,7 @@ img {
   display: flex;
   flex-direction: column;
 }
+
 @media screen and (min-width: 768px) {
   .category-container ul {
     display: flex;
