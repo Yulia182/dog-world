@@ -14,8 +14,23 @@ let tax = 0.06;
 let cartList = [];
 
 const buildCart = (name, price, desc, img) => {
+  while (cartItemList.firstChild) {
+    cartItemList.firstChild.remove();
+  }
   const newCartItem = { name: name, price: price, description: desc, img: img };
   cartList.push(newCartItem);
+  cartList.forEach((item) => {
+    const cartDiv = document.createElement("div");
+    const cartItem = document.createElement("p");
+    const cartItemPrice = document.createElement("p");
+    const removeButton = document.createElement("Button");
+    cartItem.textContent = item.name;
+    cartItemPrice.textContent = item.price;
+    removeButton.textContent = "Remove Item";
+    removeButton.classList.add("remove-item");
+    cartDiv.append(cartItem, cartItemPrice, removeButton);
+    cartItemList.append(cartDiv);
+  });
 };
 // click handler function
 const clickHandler = (e) => {
@@ -28,10 +43,6 @@ const clickHandler = (e) => {
     cart.classList.add("hidden");
   }
   if (e.target.classList.contains("cart-button")) {
-    const cartItem = document.createElement("p");
-    const cartItemPrice = document.createElement("p");
-    const removeButton = document.createElement("Button");
-
     buildCart(
       e.target.parentNode.children[1].textContent,
       e.target.parentNode.children[3].textContent,
@@ -39,14 +50,6 @@ const clickHandler = (e) => {
       e.target.parentNode.children[0].textContent
     );
     console.log(cartList);
-    //cartItem.textContent = cartList[0].name;
-    // cartItem.textContent = e.target.parentNode.children[1].textContent;
-    // cartItemPrice.textContent = e.target.parentNode.children[3].textContent;
-    removeButton.textContent = "Remove Item";
-
-    removeButton.classList.add("remove-item");
-
-    cartItemList.append(cartItem, cartItemPrice);
   }
   if (e.target.classList.contains("remove-item")) {
   }
