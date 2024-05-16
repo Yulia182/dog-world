@@ -3,6 +3,7 @@ const foodContainer = document.querySelector(".food ul");
 const clothesContainer = document.querySelector(".clothes ul");
 export const buildProducts = (products) => {
   products.forEach((item, index) => {
+    const newName = document.createElement("h2");
     const newDiv = document.createElement("div");
     const newImg = document.createElement("img");
     const newDesc = document.createElement("p");
@@ -13,13 +14,23 @@ export const buildProducts = (products) => {
     newDesc.classList.add("desc");
     addToCartButton.classList.add("cart-button");
     newPrice.classList.add("price");
+
+    newName.innerText = item.name;
+    newDesc.innerText = item.description;
+    newPrice.innerText = item.price;
+    addToCartButton.innerText = "Add to Cart";
     newImg.src = item.img;
+
     if (item.category === "toy") {
-      toyContainer.append(newImg);
+      toyContainer.append(newDiv);
+
+      newDiv.append(newImg, newName, newDesc, newPrice, addToCartButton);
     } else if (item.category === "food") {
-      foodContainer.append(newImg);
+      foodContainer.append(newDiv);
+      newDiv.append(newImg, newName, newDesc, newPrice, addToCartButton);
     } else if (item.category === "clothes") {
-      clothesContainer.append(newImg);
+      clothesContainer.append(newDiv);
+      newDiv.append(newImg, newName, newDesc, newPrice, addToCartButton);
     }
   });
 };
