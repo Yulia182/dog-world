@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog World</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- code for cart pop out -->
+    <!-- end of code for cart pop out -->
+    <header>
+      <h1>Dog World</h1>
+      <i class="fa-solid fa-cart-shopping">
+        <p id="num-of-items"></p>
+      </i>
+    </header>
+    <main>
+      <section class="home-section">
+        <img
+          class="hidden"
+          href="#clothes"
+          src="assets/dogclothes.jpg"
+          alt="dog-in-a-dress"
+        />
+        <img
+          class="hidden"
+          href="#toys"
+          src="./assets/bone.jpg"
+          alt="dog-toy"
+        />
+        <img
+          class="hidden"
+          href="#food"
+          src="./assets/dogfood.jpg"
+          alt="dogfood"
+        />
+      </section>
+      <section class="category-container food" id="food">
+        <ul></ul>
+      </section>
+      <section class="category-container toys" id="toys">
+        <ul></ul>
+      </section>
+      <section class="category-container clothes" id="clothes">
+        <ul></ul>
+      </section>
+    </main>
+    <!-- link to the icon -->
+    <script
+      src="https://kit.fontawesome.com/5a28a574b8.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- link to Javascript -->
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
