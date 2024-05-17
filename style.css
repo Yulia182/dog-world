@@ -16,13 +16,20 @@ img {
   display: none;
 }
 .shopping-cart {
-  position: fixed;
   padding: 10px;
+}
+
+.shopping-cart,
+.cash-container {
+  position: fixed;
   border-radius: 20px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ed4c6c;
+}
+.cash-container {
+  padding: 20px;
 }
 .shopping-cart ul div {
   display: flex;
