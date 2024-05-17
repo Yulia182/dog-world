@@ -8,9 +8,7 @@ const cartItemList = document.getElementById("cart-items");
 const cart = document.querySelector(".shopping-cart");
 
 //variables
-let total = 0;
-let subtotal = 0;
-let tax = 0.06;
+
 let cartList = [];
 
 const buildCart = (name, price, desc, img) => {
@@ -49,6 +47,9 @@ const buildUI = () => {
   while (cartItemList.firstChild) {
     cartItemList.firstChild.remove();
   }
+  let total = 0;
+  let subtotal = 0;
+  let tax = 0.06;
   cartList.forEach((item) => {
     const cartDiv = document.createElement("div");
     const cartItem = document.createElement("p");
@@ -60,7 +61,17 @@ const buildUI = () => {
     removeButton.classList.add("remove-item");
     cartDiv.append(cartItem, cartItemPrice, removeButton);
     cartItemList.append(cartDiv);
+    // update subtotal
+    subtotal += +item.price;
   });
+  // update and append subtotal tax and total
+  const subtotalPrice = document.querySelector(".subtotal-price");
+  const taxRate = document.querySelector(".tax-rate");
+  const totalPrice = document.querySelector(".total-price");
+  subtotalPrice.textContent = subtotal.toFixed(2);
+  taxRate.textContent = (subtotal * tax).toFixed(2);
+  total = (subtotal + subtotal * tax).toFixed(2);
+  totalPrice.textContent = total;
 };
 
 document.addEventListener("DOMContentLoaded", () => {
