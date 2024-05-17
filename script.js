@@ -2,14 +2,15 @@
 
 import { buildProducts } from "./buildProduct.js";
 import { products } from "./products.js";
+import { cashPopOut } from "./functions.js";
 
 // selectors
 const cartItemList = document.getElementById("cart-items");
-const cart = document.querySelector(".shopping-cart");
-const body = document.querySelector("body");
+export const cart = document.querySelector(".shopping-cart");
+export const body = document.querySelector("body");
 
 //variables
-
+export let total = 0;
 let cartList = [];
 
 const buildCart = (name, price, desc, img) => {
@@ -51,11 +52,11 @@ const clickHandler = (e) => {
     cardPopOut();
   }
 };
+
 const buildUI = () => {
   while (cartItemList.firstChild) {
     cartItemList.firstChild.remove();
   }
-  let total = 0;
   let subtotal = 0;
   let tax = 0.06;
   cartList.forEach((item) => {
@@ -92,35 +93,6 @@ const buildUI = () => {
 
   cartItemList.append(cashButton, cardButton);
   console.dir(cashButton);
-};
-
-const cashPopOut = () => {
-  cart.classList.add("hidden");
-  const cashDiv = document.createElement("div");
-  const cashForm = document.createElement("form");
-  const cashLabel = document.createElement("label");
-  const cashInput = document.createElement("input");
-  const submitButton = document.createElement("button");
-  submitButton.type = "submit";
-  submitButton.textContent = "Pay Cash";
-  cashInput.type = "number";
-  submitButton.id = "sendCash";
-  cashDiv.append(cashForm);
-  cashLabel.textContent = "Cash tendered";
-  cashDiv.classList.add("cash-container");
-  body.append(cashDiv);
-  cashLabel.append(cashInput);
-  cashForm.append(cashLabel, submitButton);
-
-  cashForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    //write onclick functionality here
-    let inputAmount = cashInput.value;
-    console.log(inputAmount);
-  });
-};
-const cardPopOut = () => {
-  cart.classList.add("hidden");
 };
 
 document.addEventListener("DOMContentLoaded", () => {
