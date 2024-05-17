@@ -6,6 +6,7 @@ import { products } from "./products.js";
 // selectors
 const cartItemList = document.getElementById("cart-items");
 const cart = document.querySelector(".shopping-cart");
+const body = document.querySelector("body");
 
 //variables
 
@@ -16,6 +17,7 @@ const buildCart = (name, price, desc, img) => {
   cartList.push(newCartItem);
   buildUI();
 };
+
 // click handler function
 const clickHandler = (e) => {
   console.dir(e.target);
@@ -41,6 +43,12 @@ const clickHandler = (e) => {
     });
     cartList.splice(itemIndex, 1);
     buildUI();
+  }
+  if (e.target.id === "cash-payment") {
+    cashPopOut();
+  }
+  if (e.target.id === "card-payment") {
+    cardPopOut();
   }
 };
 const buildUI = () => {
@@ -72,6 +80,47 @@ const buildUI = () => {
   taxRate.textContent = (subtotal * tax).toFixed(2);
   total = (subtotal + subtotal * tax).toFixed(2);
   totalPrice.textContent = total;
+
+  const cashButton = document.createElement("button");
+  const cardButton = document.createElement("button");
+
+  cashButton.textContent = "Pay with cash";
+  cardButton.textContent = "Pay with card";
+
+  cardButton.id = "card-payment";
+  cashButton.id = "cash-payment";
+
+  cartItemList.append(cashButton, cardButton);
+  console.dir(cashButton);
+};
+
+const cashPopOut = () => {
+  cart.classList.add("hidden");
+  const cashDiv = document.createElement("div");
+  const cashForm = document.createElement("form");
+  const cashLabel = document.createElement("label");
+  const cashInput = document.createElement("input");
+  const submitButton = document.createElement("button");
+  submitButton.type = "submit";
+  submitButton.textContent = "Pay Cash";
+  cashInput.type = "number";
+  submitButton.id = "sendCash";
+  cashDiv.append(cashForm);
+  cashLabel.textContent = "Cash tendered";
+  cashDiv.classList.add("cash-container");
+  body.append(cashDiv);
+  cashLabel.append(cashInput);
+  cashForm.append(cashLabel, submitButton);
+
+  cashForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    //write onclick functionality here
+    let inputAmount = cashInput.value;
+    console.log(inputAmount);
+  });
+};
+const cardPopOut = () => {
+  cart.classList.add("hidden");
 };
 
 document.addEventListener("DOMContentLoaded", () => {
