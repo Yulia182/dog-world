@@ -14,23 +14,9 @@ let tax = 0.06;
 let cartList = [];
 
 const buildCart = (name, price, desc, img) => {
-  while (cartItemList.firstChild) {
-    cartItemList.firstChild.remove();
-  }
   const newCartItem = { name: name, price: price, description: desc, img: img };
   cartList.push(newCartItem);
-  cartList.forEach((item) => {
-    const cartDiv = document.createElement("div");
-    const cartItem = document.createElement("p");
-    const cartItemPrice = document.createElement("p");
-    const removeButton = document.createElement("Button");
-    cartItem.textContent = item.name;
-    cartItemPrice.textContent = item.price;
-    removeButton.textContent = "Remove Item";
-    removeButton.classList.add("remove-item");
-    cartDiv.append(cartItem, cartItemPrice, removeButton);
-    cartItemList.append(cartDiv);
-  });
+  buildUI();
 };
 // click handler function
 const clickHandler = (e) => {
@@ -52,7 +38,29 @@ const clickHandler = (e) => {
     console.log(cartList);
   }
   if (e.target.classList.contains("remove-item")) {
+    let itemIndex = cartList.findIndex((item) => {
+      return item.name === e.target.parentNode.firstChild.textContent;
+    });
+    cartList.splice(itemIndex, 1);
+    buildUI();
   }
+};
+const buildUI = () => {
+  while (cartItemList.firstChild) {
+    cartItemList.firstChild.remove();
+  }
+  cartList.forEach((item) => {
+    const cartDiv = document.createElement("div");
+    const cartItem = document.createElement("p");
+    const cartItemPrice = document.createElement("p");
+    const removeButton = document.createElement("Button");
+    cartItem.textContent = item.name;
+    cartItemPrice.textContent = item.price;
+    removeButton.textContent = "Remove Item";
+    removeButton.classList.add("remove-item");
+    cartDiv.append(cartItem, cartItemPrice, removeButton);
+    cartItemList.append(cartDiv);
+  });
 };
 
 document.addEventListener("DOMContentLoaded", () => {
