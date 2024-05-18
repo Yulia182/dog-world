@@ -3,7 +3,7 @@ const foodContainer = document.querySelector(".food ul");
 const clothesContainer = document.querySelector(".clothes ul");
 export const buildProducts = (products) => {
   products.forEach((item, index) => {
-    const newName = document.createElement("h2");
+    const newName = document.createElement("h3");
     const newDiv = document.createElement("div");
     const newImg = document.createElement("img");
     const newDesc = document.createElement("p");
