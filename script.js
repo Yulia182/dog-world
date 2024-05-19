@@ -3,6 +3,7 @@
 import { buildProducts } from "./buildProduct.js";
 import { products } from "./products.js";
 import { cashPopOut } from "./functions.js";
+import { cardPopOut } from "./functions.js";
 
 // selectors
 const cartItemList = document.getElementById("cart-items");
@@ -97,6 +98,5 @@ const buildUI = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   buildProducts(products);
-  //   updateUI();
   document.body.addEventListener("click", clickHandler);
 });
