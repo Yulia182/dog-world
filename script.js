@@ -28,7 +28,8 @@ const clickHandler = (e) => {
     cart.classList.remove("hidden");
   }
   if (e.target.classList.contains("close")) {
-    cart.classList.add("hidden");
+    //cart.classList.add("hidden");
+    e.target.parentNode.classList.add("hidden");
   }
   if (e.target.classList.contains("cart-button")) {
     buildCart(
