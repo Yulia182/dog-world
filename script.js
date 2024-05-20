@@ -6,6 +6,8 @@ import { cashPopOut, cardPopOut, printReceipt } from "./functions.js";
 
 // selectors
 const cartItemList = document.getElementById("cart-items");
+const productContainer = document.querySelector(".products-container");
+const numberOfItemsInCart = document.getElementById("num-of-items");
 export const cart = document.querySelector(".shopping-cart");
 export const body = document.querySelector("body");
 
@@ -32,7 +34,6 @@ const buildCart = (name, price, desc, img, quantity) => {
   } else {
     cartList[indexOfItem].quantity++;
   }
-
   buildUI();
 };
 
@@ -42,14 +43,15 @@ const clickHandler = (e) => {
   if (e.target.classList.contains("fa-cart-shopping")) {
     console.dir(cart);
     cart.classList.remove("hidden");
+    // hide menu when click on cart
+    productContainer.classList.add("hidden");
   }
   if (e.target.classList.contains("close")) {
     //cart.classList.add("hidden");
     e.target.parentNode.classList.add("hidden");
+    productContainer.classList.remove("hidden");
   }
   if (e.target.classList.contains("cart-button")) {
-    console.dir(e.target.parentNode.children);
-
     buildCart(
       e.target.parentNode.children[1].textContent,
       e.target.parentNode.children[3].textContent,
@@ -91,6 +93,7 @@ const buildUI = () => {
     const cartItemPrice = document.createElement("p");
     const quantity = document.createElement("p");
     const removeButton = document.createElement("Button");
+    cartItem.classList.add("item-name");
     cartDiv.classList.add("list-item");
     cartDiv.append(cartItem, cartItemPrice, quantity, removeButton);
 
@@ -102,8 +105,13 @@ const buildUI = () => {
     removeButton.classList.add("remove-item");
 
     cartItemList.append(cartDiv);
+    console.log(cartItemList);
+    // tried to add functionality to display numbers of items next to the icon cart,
+    // but failed
+    // const displayQuantity = cartList.length + item.quantity;
+    // console.log(typeof displayQuantity);
+    // numberOfItemsInCart.innerText = displayQuantity;
   });
-
   // update and append subtotal tax and total
   const subtotalPrice = document.querySelector(".subtotal-price");
   const taxRate = document.querySelector(".tax-rate");
@@ -122,13 +130,10 @@ const buildUI = () => {
 
   const cashButton = document.createElement("button");
   const cardButton = document.createElement("button");
-
   cashButton.textContent = "Pay with cash";
   cardButton.textContent = "Pay with card";
-
   cardButton.id = "card-payment";
   cashButton.id = "cash-payment";
-
   cartItemList.append(cashButton, cardButton);
   console.dir(cashButton);
 };
