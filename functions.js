@@ -1,8 +1,5 @@
-import { cartList } from "./script.js";
-import { total } from "./script.js";
-import { body } from "./script.js";
-import { cart } from "./script.js";
-import { subtotal } from "/script.js";
+import { cartList, total, body, cart, subtotal, tax } from "./script.js";
+// import { subtotal } from "/script.js";
 export const cashPopOut = () => {
   cart.classList.add("hidden");
   const cashDiv = document.createElement("div");
@@ -13,6 +10,7 @@ export const cashPopOut = () => {
   const totalCost = document.createElement("p");
   const change = document.createElement("p");
   const cashCloseButton = document.createElement("button");
+  const viewReceipt = document.createElement("button");
 
   totalCost.textContent = `Total: $${total}`;
   submitButton.type = "submit";
@@ -22,7 +20,9 @@ export const cashPopOut = () => {
   cashCloseButton.id = "cash-close-button";
   cashCloseButton.classList.add("close");
   cashCloseButton.innerText = "X";
-  cashDiv.append(cashCloseButton, totalCost, cashForm, change);
+  viewReceipt.classList.add("view-receipt");
+  viewReceipt.textContent = "View Receipt";
+  cashDiv.append(cashCloseButton, totalCost, cashForm, change, viewReceipt);
   cashLabel.textContent = "Cash tendered";
   cashDiv.classList.add("cash-container");
   body.append(cashDiv);
@@ -33,11 +33,12 @@ export const cashPopOut = () => {
     e.preventDefault();
     //write onclick functionality here
     let inputAmount = cashInput.value;
-    let changeAmount = (inputAmount - total).toFixed(2);
-    change.textContent = `Your change: $${changeAmount}`;
-    console.log(inputAmount);
-    cashDiv.classList.add("hidden");
-    printReceipt();
+    if (total <= inputAmount) {
+      let changeAmount = (inputAmount - total).toFixed(2);
+      change.textContent = `Your change: $${changeAmount}`;
+    } else {
+      alert("Enter the correct amount!");
+    }
   });
 };
 export const cardPopOut = () => {
@@ -125,15 +126,17 @@ export const cardPopOut = () => {
     }
   });
 };
-const printReceipt = () => {
+export const printReceipt = () => {
+  const cashDiv = document.querySelector(".cash-container");
+  cashDiv.classList.add("hidden");
   //popuating receipt
-
   const receiptDiv = document.createElement("div");
-  receiptDiv.classList.add("receipt-container");
-  const total = document.createElement("h2");
-  const subtotal = document.createElement("h2");
+  const totalText = document.createElement("p");
+  const subtotalText = document.createElement("p");
+  const taxText = document.createElement("p");
   const cartItems = document.createElement("ul");
   const closeButton = document.createElement("button");
+  receiptDiv.classList.add("receipt-container");
   closeButton.textContent = "X";
   closeButton.classList.add("close");
   cartList.forEach((element) => {
@@ -144,9 +147,11 @@ const printReceipt = () => {
     itemImage.src = element.img;
     itemPrice.textContent = element.price;
     cartItem.textContent = element.name;
-
     cartItems.append(cartItem, itemImage, itemPrice);
   });
+  totalText.textContent = total;
+  subtotalText.textContent = subtotal;
+  taxText.textContent = (+tax * subtotal).toFixed(2);
   body.append(receiptDiv);
-  receiptDiv.append(closeButton, total, subtotal, cartItems);
+  receiptDiv.append(closeButton, subtotalText, taxText, totalText, cartItems);
 };
