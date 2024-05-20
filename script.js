@@ -2,8 +2,7 @@
 
 import { buildProducts } from "./buildProduct.js";
 import { products } from "./products.js";
-import { cashPopOut } from "./functions.js";
-import { cardPopOut } from "./functions.js";
+import { cashPopOut, cardPopOut } from "./functions.js";
 
 // selectors
 const cartItemList = document.getElementById("cart-items");
@@ -77,6 +76,7 @@ const clickHandler = (e) => {
 };
 
 const buildUI = () => {
+  subtotal = 0;
   while (cartItemList.firstChild) {
     cartItemList.firstChild.remove();
   }
@@ -100,14 +100,22 @@ const buildUI = () => {
 
     cartItemList.append(cartDiv);
     // update subtotal
-    subtotal += +item.price * item.quantity;
   });
+
   // update and append subtotal tax and total
   const subtotalPrice = document.querySelector(".subtotal-price");
   const taxRate = document.querySelector(".tax-rate");
   const totalPrice = document.querySelector(".total-price");
-  subtotalPrice.textContent = subtotal.toFixed(2);
+  for (let i = 0; i < cartList.length; i++) {
+    console.log(cartList[i]);
+    if (cartList[i].quantity >= 1) {
+      subtotal += +cartList[i].price * +cartList[i].quantity;
+    }
+  }
+  console.log(subtotal);
+  subtotalPrice.textContent = subtotal;
   taxRate.textContent = (subtotal * tax).toFixed(2);
+
   total = (subtotal + subtotal * tax).toFixed(2);
   totalPrice.textContent = total;
 
