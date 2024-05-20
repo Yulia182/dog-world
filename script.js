@@ -2,7 +2,7 @@
 
 import { buildProducts } from "./buildProduct.js";
 import { products } from "./products.js";
-import { cashPopOut, cardPopOut } from "./functions.js";
+import { cashPopOut, cardPopOut, printReceipt } from "./functions.js";
 
 // selectors
 const cartItemList = document.getElementById("cart-items");
@@ -11,8 +11,8 @@ export const body = document.querySelector("body");
 
 //variables
 export let subtotal = 0;
-
 export let total = 0;
+export let tax = 0.06;
 export let cartList = [];
 
 const buildCart = (name, price, desc, img, quantity) => {
@@ -73,6 +73,9 @@ const clickHandler = (e) => {
   if (e.target.id === "card-payment") {
     cardPopOut();
   }
+  if (e.target.classList.contains("view-receipt")) {
+    printReceipt();
+  }
 };
 
 const buildUI = () => {
@@ -80,15 +83,13 @@ const buildUI = () => {
   while (cartItemList.firstChild) {
     cartItemList.firstChild.remove();
   }
-  let tax = 0.06;
-
   cartList.forEach((item) => {
     const cartDiv = document.createElement("div");
     const cartItem = document.createElement("p");
     const cartItemPrice = document.createElement("p");
     const quantity = document.createElement("p");
     const removeButton = document.createElement("Button");
-
+    cartDiv.classList.add("list-item");
     cartDiv.append(cartItem, cartItemPrice, quantity, removeButton);
 
     quantity.textContent = item.quantity;
@@ -99,7 +100,6 @@ const buildUI = () => {
     removeButton.classList.add("remove-item");
 
     cartItemList.append(cartDiv);
-    // update subtotal
   });
 
   // update and append subtotal tax and total
@@ -109,11 +109,10 @@ const buildUI = () => {
   for (let i = 0; i < cartList.length; i++) {
     console.log(cartList[i]);
     if (cartList[i].quantity >= 1) {
-      subtotal += +cartList[i].price * +cartList[i].quantity;
+      subtotal += +cartList[i].price * cartList[i].quantity;
     }
   }
-  console.log(subtotal);
-  subtotalPrice.textContent = subtotal;
+  subtotalPrice.textContent = subtotal.toFixed(2);
   taxRate.textContent = (subtotal * tax).toFixed(2);
 
   total = (subtotal + subtotal * tax).toFixed(2);
