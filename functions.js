@@ -1,6 +1,8 @@
-import { cart } from "./script.js";
+import { cartList } from "./script.js";
 import { total } from "./script.js";
 import { body } from "./script.js";
+import { cart } from "./script.js";
+import { subtotal } from "/script.js";
 export const cashPopOut = () => {
   cart.classList.add("hidden");
   const cashDiv = document.createElement("div");
@@ -34,6 +36,8 @@ export const cashPopOut = () => {
     let changeAmount = (inputAmount - total).toFixed(2);
     change.textContent = `Your change: $${changeAmount}`;
     console.log(inputAmount);
+    cashDiv.classList.add("hidden");
+    printReceipt();
   });
 };
 export const cardPopOut = () => {
@@ -83,7 +87,6 @@ export const cardPopOut = () => {
 
     //using regex to validate card
 
-    let areAllValid = false;
     let cardNumValid = false;
     let ssvValid = false;
     let expirationDateValid = false;
@@ -117,8 +120,33 @@ export const cardPopOut = () => {
       expirationDateInput.classList.remove("invalid");
     }
     if (cardNumValid & ssvValid & expirationDateValid) {
+      cardDiv.classList.add("hidden");
       printReceipt();
     }
   });
 };
-const printReceipt = () => {};
+const printReceipt = () => {
+  //popuating receipt
+
+  const receiptDiv = document.createElement("div");
+  receiptDiv.classList.add("receipt-container");
+  const total = document.createElement("h2");
+  const subtotal = document.createElement("h2");
+  const cartItems = document.createElement("ul");
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.classList.add("close");
+  cartList.forEach((element) => {
+    let cartItem = document.createElement("li");
+    let itemImage = document.createElement("img");
+    let itemPrice = document.createElement("p");
+    itemImage.classList.add("receipt-image");
+    itemImage.src = element.img;
+    itemPrice.textContent = element.price;
+    cartItem.textContent = element.name;
+
+    cartItems.append(cartItem, itemImage, itemPrice);
+  });
+  body.append(receiptDiv);
+  receiptDiv.append(closeButton, total, subtotal, cartItems);
+};
