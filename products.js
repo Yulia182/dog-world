@@ -75,6 +75,6 @@ export const products = [
     img: "./assets/dogclothes3.jpg",
     category: "clothes",
     description: "Take your dog to fashion week with this pink zebra outfit.",
-    price: 25.99,
+    price: 699.99,
   },
 ];

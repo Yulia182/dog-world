@@ -139,13 +139,18 @@ h2 {
   z-index: +1;
   width: 80%;
   font-weight: 400;
-}
-.cash-container {
   padding: 20px;
+  height: 50vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-.shopping-cart {
-  padding: 10px;
+.new-div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: black 1px solid;
+  padding: 10px 10px;
 }
+
 .card-container label {
   display: flex;
   justify-content: space-between;

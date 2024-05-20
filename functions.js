@@ -33,7 +33,7 @@ export const cashPopOut = () => {
     e.preventDefault();
     //write onclick functionality here
     let inputAmount = cashInput.value;
-    if (total <= inputAmount) {
+    if (total <= +inputAmount) {
       let changeAmount = (inputAmount - total).toFixed(2);
       change.textContent = `Your change: $${changeAmount}`;
     } else {
@@ -127,31 +127,33 @@ export const cardPopOut = () => {
   });
 };
 export const printReceipt = () => {
-  const cashDiv = document.querySelector(".cash-container");
-  cashDiv.classList.add("hidden");
   //popuating receipt
   const receiptDiv = document.createElement("div");
-  const totalText = document.createElement("p");
   const subtotalText = document.createElement("p");
+  const totalText = document.createElement("p");
   const taxText = document.createElement("p");
-  const cartItems = document.createElement("ul");
+  const cartItems = document.createElement("div");
   const closeButton = document.createElement("button");
   receiptDiv.classList.add("receipt-container");
   closeButton.textContent = "X";
   closeButton.classList.add("close");
   cartList.forEach((element) => {
-    let cartItem = document.createElement("li");
-    let itemImage = document.createElement("img");
+    const quantityP = document.createElement("p");
+    const newDiv = document.createElement("div");
+    newDiv.classList.add("new-div");
+    let itemName = document.createElement("p");
+    //cartItem.classList.add("receipt-item");
+    cartItems.classList.add("receipt-items");
     let itemPrice = document.createElement("p");
-    itemImage.classList.add("receipt-image");
-    itemImage.src = element.img;
-    itemPrice.textContent = element.price;
-    cartItem.textContent = element.name;
-    cartItems.append(cartItem, itemImage, itemPrice);
+    quantityP.textContent = element.quantity;
+    itemPrice.textContent = "$" + element.price * element.quantity;
+    itemName.textContent = element.name;
+    newDiv.append(itemName, itemPrice, quantityP);
+    cartItems.append(newDiv);
   });
-  totalText.textContent = total;
-  subtotalText.textContent = subtotal;
-  taxText.textContent = (+tax * subtotal).toFixed(2);
+  totalText.textContent = "Total: $" + total;
+  subtotalText.textContent = "Subtotal: $" + subtotal;
+  taxText.textContent = "Tax: $" + (+tax * subtotal).toFixed(2);
   body.append(receiptDiv);
-  receiptDiv.append(closeButton, subtotalText, taxText, totalText, cartItems);
+  receiptDiv.append(closeButton, cartItems, subtotalText, taxText, totalText);
 };

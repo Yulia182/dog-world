@@ -74,6 +74,8 @@ const clickHandler = (e) => {
     cardPopOut();
   }
   if (e.target.classList.contains("view-receipt")) {
+    const cashDiv = document.querySelector(".cash-container");
+    e.target.parentNode.classList.add("hidden");
     printReceipt();
   }
 };
