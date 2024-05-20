@@ -79,6 +79,7 @@ h2 {
   font-weight: bold;
   font-size: 20px;
 }
+
 .cart-button {
   font-family: "Poppins", sans-serif;
   padding: 10px 20px;
@@ -87,6 +88,7 @@ h2 {
   /* bgc needs to be changed */
   background-color: lightsalmon;
 }
+
 .cart-button:hover {
   background-color: #ed4c6c;
   color: white;
@@ -96,8 +98,15 @@ h2 {
 .hidden {
   display: none;
 }
+.cash-form,
+.card-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .shopping-cart,
-.cash-container {
+.cash-container,
+.card-container {
   position: fixed;
   border-radius: 20px;
   top: 50%;
@@ -111,9 +120,17 @@ h2 {
 .shopping-cart {
   padding: 10px;
 }
+.card-container label {
+  display: flex;
+  justify-content: space-between;
+}
 .shopping-cart ul div {
   display: flex;
   justify-content: space-between;
+}
+
+.invalid {
+  border-color: red;
 }
 
 /* desktop styles */
