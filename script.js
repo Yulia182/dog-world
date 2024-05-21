@@ -17,7 +17,7 @@ export let total = 0;
 export let tax = 0.06;
 export let cartList = [];
 
-const buildCart = (name, price, desc, img, quantity) => {
+const buildCart = (name, price, desc, img) => {
   const indexOfItem = cartList.findIndex((item) => {
     return item.name === name;
   });
@@ -53,12 +53,15 @@ const clickHandler = (e) => {
   }
   if (e.target.classList.contains("cart-button")) {
     numberOfItemsInCart.classList.remove("hidden");
+    const itemName = e.target.parentNode.children[1].textContent;
+    const newCartItem = products.find((product) => {
+      return product.name === itemName;
+    });
     buildCart(
-      e.target.parentNode.children[1].textContent,
-      e.target.parentNode.children[3].textContent,
-      e.target.parentNode.children[2].textContent,
-      e.target.parentNode.children[0].src,
-      e.target.parentNode.children[4].value
+      newCartItem.name,
+      newCartItem.price,
+      newCartItem.description,
+      newCartItem.img
     );
     console.log(cartList);
   }
@@ -66,7 +69,6 @@ const clickHandler = (e) => {
     let itemIndex = cartList.findIndex((item) => {
       return item.name === e.target.parentNode.firstChild.textContent;
     });
-
     cartList.splice(itemIndex, 1);
     buildUI();
   }
@@ -82,7 +84,6 @@ const clickHandler = (e) => {
     printReceipt();
   }
 };
-
 const buildUI = () => {
   subtotal = 0;
   while (cartItemList.firstChild) {
@@ -107,10 +108,10 @@ const buildUI = () => {
     removeButton.classList.add("remove-item");
 
     cartItemList.append(cartDiv);
-    console.log(cartItemList);
     displayQuantity += item.quantity;
-    numberOfItemsInCart.innerText = displayQuantity;
+    console.log(cartItemList);
   });
+  numberOfItemsInCart.innerText = displayQuantity;
   // update and append subtotal tax and total
   const subtotalPrice = document.querySelector(".subtotal-price");
   const taxRate = document.querySelector(".tax-rate");
@@ -120,10 +121,10 @@ const buildUI = () => {
     if (cartList[i].quantity >= 1) {
       subtotal += +cartList[i].price * cartList[i].quantity;
     }
+    console.log(subtotal, tax, total);
   }
   subtotalPrice.textContent = subtotal.toFixed(2);
   taxRate.textContent = (subtotal * tax).toFixed(2);
-
   total = (subtotal + subtotal * tax).toFixed(2);
   totalPrice.textContent = total;
 

@@ -17,7 +17,7 @@ export const buildProducts = (products) => {
 
     newName.innerText = item.name;
     newDesc.innerText = item.description;
-    newPrice.innerText = item.price;
+    newPrice.innerText = `$${item.price}`;
     addToCartButton.innerText = "Add to Cart";
     newImg.src = item.img;
 

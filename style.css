@@ -15,8 +15,8 @@ body {
   font-weight: 300;
   min-height: 100vh;
   line-height: 2em;
-  background-color: #f0e1df;
   margin-bottom: 50px;
+  background-image: linear-gradient(to bottom right, pink, #f0e1df);
 }
 /* header styles */
 header {
@@ -59,8 +59,6 @@ h2 {
   font-size: 1.8em;
   color: #ed4c6c;
 }
-/* scroll */
-
 /* product card styles */
 .surrounding-div {
   width: 250px;
@@ -181,7 +179,8 @@ h2 {
   display: flex;
   justify-content: space-around;
 }
-.list-item {
+.list-item,
+.new-div {
   display: flex;
   justify-content: space-around;
   border-bottom: 1px solid black;
@@ -190,7 +189,13 @@ h2 {
 .list-item p {
   margin-right: 30px;
 }
+.new-div p {
+  margin-right: 30px;
+}
 .item-name {
+  flex-grow: 1;
+}
+.receipt-item {
   flex-grow: 1;
 }
 .close {
@@ -204,8 +209,14 @@ h2 {
 }
 .subtotal,
 .tax,
-.total {
+.total,
+.receipt-total,
+.receipt-subtotal,
+.receipt-tax {
   font-weight: 600;
+}
+.receipt-subtotal {
+  margin-top: 30px;
 }
 /* cash popout and card popout styles */
 input {
