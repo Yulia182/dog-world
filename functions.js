@@ -144,6 +144,9 @@ export const printReceipt = () => {
   const taxText = document.createElement("p");
   const cartItems = document.createElement("div");
   const closeButton = document.createElement("button");
+  totalText.classList.add("receipt-total");
+  subtotalText.classList.add("receipt-subtotal");
+  taxText.classList.add("receipt-tax");
   receiptDiv.classList.add("receipt-container");
   closeButton.textContent = "X";
   closeButton.classList.add("close");
@@ -152,7 +155,7 @@ export const printReceipt = () => {
     const newDiv = document.createElement("div");
     newDiv.classList.add("new-div");
     let itemName = document.createElement("p");
-    //cartItem.classList.add("receipt-item");
+    itemName.classList.add("receipt-item");
     cartItems.classList.add("receipt-items");
     let itemPrice = document.createElement("p");
     quantityP.textContent = element.quantity;
@@ -161,8 +164,9 @@ export const printReceipt = () => {
     newDiv.append(itemName, itemPrice, quantityP);
     cartItems.append(newDiv);
   });
-  totalText.textContent = "Total: $" + total;
-  subtotalText.textContent = "Subtotal: $" + subtotal;
+  console.log(total);
+  totalText.textContent = "Total: $" + parseFloat(total).toFixed(2);
+  subtotalText.textContent = "Subtotal: $" + parseFloat(subtotal).toFixed(2);
   taxText.textContent = "Tax: $" + (+tax * subtotal).toFixed(2);
   body.append(receiptDiv);
   receiptDiv.append(closeButton, cartItems, subtotalText, taxText, totalText);
