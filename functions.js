@@ -45,6 +45,10 @@ export const cardPopOut = () => {
   cart.classList.add("hidden");
   //creating the elements in the card form
   const cardDiv = document.createElement("div");
+  const visaIcon = document.createElement("i");
+  const masterCardIcon = document.createElement("i");
+  const discoverCardIcon = document.createElement("i");
+
   const cardCloseButton = document.createElement("button");
   const cardForm = document.createElement("form");
   const cardNumLabel = document.createElement("label");
@@ -54,10 +58,13 @@ export const cardPopOut = () => {
   const expirationDateLabel = document.createElement("label");
   const expirationDateInput = document.createElement("input");
   const submitButton = document.createElement("button");
+  submitButton.classList.add("card-button");
 
   //Asigning values and text to page
+  visaIcon.classList.add("fa-brands", "fa-cc-visa");
+  masterCardIcon.classList.add("fa-brands", "fa-cc-mastercard");
+  discoverCardIcon.classList.add("fa-brands", "fa-cc-discover");
   cardDiv.classList.add("card-container");
-  cardDiv.style.display = "fixed";
   cardCloseButton.innerText = "X";
   cardCloseButton.classList.add("close");
   cardNumLabel.textContent = "Card number: ";
@@ -72,6 +79,9 @@ export const cardPopOut = () => {
   body.append(cardDiv);
   cardDiv.append(cardCloseButton, cardForm);
   cardForm.append(
+    visaIcon,
+    discoverCardIcon,
+    masterCardIcon,
     cardNumLabel,
     cardSsvLabel,
     expirationDateLabel,
@@ -93,12 +103,12 @@ export const cardPopOut = () => {
     let expirationDateValid = false;
 
     const cardRegex =
-      /([0-9]{16})|([0-9]{4})[- ]([0-9]{4})[- ]([0-9]{4})[- ]([0-9]{4})/;
-    const ssvRegex = /([0-9]{3})/;
-    const expirationDateRegex = /([0-9]{2}\/[0-9]{2})/;
+      /^([0-9]{16})|([0-9]{4})[- ]([0-9]{4})[- ]([0-9]{4})[- ]([0-9]{4})$/;
+    const ssvRegex = /^([0-9]{3})$/;
+    const expirationDateRegex = /^([0-9]{2}\/[0-9]{2})$/;
     if (!cardRegex.test(cardNumInput.value)) {
       console.log("invalid card");
-      cardNumInput.value = "INVALID CARD";
+      cardNumInput.placeholder = "INVALID CARD";
       cardNumInput.classList.add("invalid");
     } else {
       cardNumValid = true;
