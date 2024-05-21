@@ -10,7 +10,7 @@ const productContainer = document.querySelector(".products-container");
 const numberOfItemsInCart = document.getElementById("num-of-items");
 export const cart = document.querySelector(".shopping-cart");
 export const body = document.querySelector("body");
-
+numberOfItemsInCart.classList.add("hidden");
 //variables
 export let subtotal = 0;
 export let total = 0;
@@ -52,6 +52,7 @@ const clickHandler = (e) => {
     productContainer.classList.remove("hidden");
   }
   if (e.target.classList.contains("cart-button")) {
+    numberOfItemsInCart.classList.remove("hidden");
     buildCart(
       e.target.parentNode.children[1].textContent,
       e.target.parentNode.children[3].textContent,
@@ -87,6 +88,7 @@ const buildUI = () => {
   while (cartItemList.firstChild) {
     cartItemList.firstChild.remove();
   }
+  let displayQuantity = 0;
   cartList.forEach((item) => {
     const cartDiv = document.createElement("div");
     const cartItem = document.createElement("p");
@@ -106,11 +108,8 @@ const buildUI = () => {
 
     cartItemList.append(cartDiv);
     console.log(cartItemList);
-    // tried to add functionality to display numbers of items next to the icon cart,
-    // but failed
-    // const displayQuantity = cartList.length + item.quantity;
-    // console.log(typeof displayQuantity);
-    // numberOfItemsInCart.innerText = displayQuantity;
+    displayQuantity += item.quantity;
+    numberOfItemsInCart.innerText = displayQuantity;
   });
   // update and append subtotal tax and total
   const subtotalPrice = document.querySelector(".subtotal-price");

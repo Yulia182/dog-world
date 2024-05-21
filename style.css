@@ -27,6 +27,14 @@ header {
   background-color: #ed4c6c;
   color: white;
 }
+#num-of-items {
+  border-radius: 50%;
+  text-align: center;
+  padding: 2px;
+  font-size: small;
+  background-color: #ed974c;
+  transform: translate(-100%, -150%);
+}
 /* main styles */
 .homesection img {
   width: 200px;
@@ -81,6 +89,7 @@ h2 {
   font-weight: bold;
   font-size: 20px;
 }
+.card-button,
 .cart-button,
 .remove-item,
 .view-receipt,
@@ -94,6 +103,7 @@ h2 {
   /* bgc needs to be changed */
   background-color: #ed974c;
 }
+
 .remove-item,
 .view-receipt,
 #card-payment,
@@ -111,6 +121,7 @@ h2 {
   color: white;
   transition: all 0.4s ease;
 }
+.card-button:hover,
 .remove-item:hover,
 .view-receipt:hover,
 #card-payment:hover,
@@ -147,7 +158,19 @@ h2 {
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: white;
+  box-shadow: 10px 10px 10px 0.1px grey;
 }
+.card-container i {
+  margin: 0 15px;
+  transform: scale(175%);
+}
+.card-container form label {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+}
+
 .new-div {
   display: flex;
   justify-content: space-between;
