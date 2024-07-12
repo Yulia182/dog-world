@@ -25,4 +25,4 @@ Welcome to the Dog Shop POS System! This application is designed to streamline t
 ## Contributing
 
 <a href="https://github.com/tmcarron">Tyler Carron</a>
-<a href="https://github.com/Yulia182">Iuliia Hernandez</a>
+<a href="https://github.com/Yulia182">Yulia Hernandez</a>

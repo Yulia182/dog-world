@@ -9,84 +9,119 @@ a {
   padding: 0;
   text-decoration: none;
 }
+
 /* mobile styles */
 body {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   min-height: 100vh;
-  line-height: 2em;
+  line-height: 1.6em;
   margin-bottom: 50px;
-  background-image: linear-gradient(to bottom right, pink, #f0e1df);
+  font-size: 14px;
+  background-image: linear-gradient(to bottom right, #e0f7fa, #b2ebf2);
 }
+
 /* header styles */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 30px;
-  background-color: #ed4c6c;
+  background-color: #00796b;
   color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 #num-of-items {
   border-radius: 50%;
   text-align: center;
-  padding: 2px;
+  padding: 2px 6px;
   font-size: small;
-  background-color: #ed974c;
+  background-color: #004d40;
+  color: white;
   transform: translate(-100%, -150%);
 }
+
 /* main styles */
-.homesection img {
-  width: 200px;
-}
 .homesection {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
+
+/* .homesection img {
+  width: 200px;
+  border-radius: 15px;
+  transition: transform 0.3s;
+} */
+
+/* .homesection img:hover {
+  transform: scale(1.1);
+} */
+
 .products-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
 }
+
 .category-container ul {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
+
 h2 {
   text-align: center;
   margin: 30px 0;
   font-size: 1.8em;
-  color: #ed4c6c;
+  color: #00796b;
 }
+
 /* product card styles */
 .surrounding-div {
-  width: 250px;
+  width: 200px;
   display: flex;
+  min-height: 400px;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin: 20px 0;
   padding: 20px;
-  border: lightgrey solid 1px;
-  border-radius: 10px;
-  background-color: rgb(252, 243, 249);
-  box-shadow: 10px 10px 10px 0.1px grey;
+  border: 1px solid #e0e0e0;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
 }
+
+.surrounding-div:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
 .product-img {
-  max-width: 250px;
-  max-height: 250px;
-  border-radius: 20px;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 15px;
   margin: 20px;
-  z-index: 0;
 }
+
 .desc {
   text-align: center;
+  font-size: 1.1em;
+  color: #333;
 }
+
 .price {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.2em;
+  color: #00796b;
 }
+
 .card-button,
 .cart-button,
 .remove-item,
@@ -98,46 +133,42 @@ h2 {
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
-  /* bgc needs to be changed */
-  background-color: #ed974c;
+  background-color: #004d40;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.remove-item,
-.view-receipt,
-#card-payment,
-#cash-payment,
-#sendCash {
-  padding: 5px 10px;
-  margin: 5px 0;
-}
 #card-payment,
 #cash-payment {
-  margin: 50px 20px 30px 0;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
-.cart-button:hover {
-  background-color: #ed4c6c;
-  color: white;
-  transition: all 0.4s ease;
-}
+
 .card-button:hover,
+.cart-button:hover,
 .remove-item:hover,
 .view-receipt:hover,
 #card-payment:hover,
 #cash-payment:hover,
 #sendCash:hover {
-  background-color: #ed4c6c;
-  transition: all 0.4s ease;
+  background-color: #00796b;
   color: white;
 }
+
 /* shopping cart styles */
 .hidden {
   display: none;
 }
+
 .cash-form,
 .card-form {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
+
 .receipt-container,
 .shopping-cart,
 .cash-container,
@@ -147,66 +178,82 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ed4c6c;
-  z-index: +1;
+  background-color: white;
+  z-index: 10;
   width: 80%;
   font-weight: 400;
-  padding: 20px;
+  padding: 30px;
   height: 50vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  background-color: white;
-  box-shadow: 10px 10px 10px 0.1px grey;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .card-container i {
   margin: 0 15px;
-  transform: scale(175%);
+  transform: scale(1.75);
 }
+
 .card-container form label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin: 10px;
+  font-size: 1.1em;
+  color: #333;
 }
 
 .new-div {
   display: flex;
   justify-content: space-between;
-  border-bottom: black 1px solid;
-  padding: 10px 10px;
+  border-bottom: 1px solid black;
+  padding: 10px;
 }
+
 .card-container label {
   display: flex;
   justify-content: space-around;
 }
+
 .list-item,
 .new-div {
   display: flex;
-  justify-content: space-around;
-  border-bottom: 1px solid black;
+  justify-content: space-between;
+  border-bottom: 1px solid #e0e0e0;
   padding: 20px 0;
 }
-.list-item p {
-  margin-right: 30px;
-}
+
+.list-item p,
 .new-div p {
   margin-right: 30px;
 }
-.item-name {
-  flex-grow: 1;
-}
+
+.item-name,
 .receipt-item {
   flex-grow: 1;
+  font-size: 1.1em;
+  color: #333;
 }
+
 .close {
+  position: absolute;
   border-radius: 50%;
   border: none;
   height: 30px;
   width: 30px;
-  background-color: #ed974c;
-  box-shadow: 2px 2px black;
-  margin-bottom: 30px;
+  background-color: #004d40;
+  color: white;
+  cursor: pointer;
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  right: 15px;
+  top: 15px;
 }
+
+.close:hover {
+  background-color: #00796b;
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+}
+
 .subtotal,
 .tax,
 .total,
@@ -214,22 +261,27 @@ h2 {
 .receipt-subtotal,
 .receipt-tax {
   font-weight: 600;
+  font-size: 1.2em;
+  color: #00796b;
+  text-align: right;
 }
+
 .receipt-subtotal {
   margin-top: 30px;
 }
+
 /* cash popout and card popout styles */
 input {
   margin-left: 15px;
   padding: 5px;
 }
+
 /* receipt styles */
 .invalid {
   border-color: red;
 }
-.receipt-image {
-  width: 50px;
-}
+
+/* Card container styles */
 
 /* desktop styles */
 @media screen and (min-width: 768px) {
@@ -238,15 +290,15 @@ input {
     justify-content: center;
     flex-wrap: wrap;
   }
+
   .surrounding-div {
     margin: 20px;
   }
+
   .product-img {
     transition: transform 0.4s;
   }
-  .product-img:hover {
-    transform: scale(1.05);
-  }
+
   .receipt-container,
   .shopping-cart,
   .cash-container,
