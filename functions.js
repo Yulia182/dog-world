@@ -97,7 +97,6 @@ export const cardPopOut = () => {
     console.log(cardNumInput.value);
 
     //using regex to validate card
-
     let cardNumValid = false;
     let ssvValid = false;
     let expirationDateValid = false;

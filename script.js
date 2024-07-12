@@ -47,7 +47,6 @@ const clickHandler = (e) => {
     productContainer.classList.add("hidden");
   }
   if (e.target.classList.contains("close")) {
-    //cart.classList.add("hidden");
     e.target.parentNode.classList.add("hidden");
     productContainer.classList.remove("hidden");
   }
@@ -65,6 +64,7 @@ const clickHandler = (e) => {
     );
     console.log(cartList);
   }
+  // remove item from the cart
   if (e.target.classList.contains("remove-item")) {
     let itemIndex = cartList.findIndex((item) => {
       return item.name === e.target.parentNode.firstChild.textContent;
@@ -83,6 +83,32 @@ const clickHandler = (e) => {
     e.target.parentNode.classList.add("hidden");
     printReceipt();
   }
+  // increase quantity
+  if (e.target.classList.contains("quantity-plus")) {
+    const itemName = e.target
+      .closest(".list-item")
+      .querySelector(".item-name").textContent;
+    const item = cartList.find((item) => item.name === itemName);
+    if (item) {
+      item.quantity++;
+      buildUI();
+    }
+  }
+  // decrease quantity
+  if (e.target.classList.contains("quantity-minus")) {
+    const itemName = e.target
+      .closest(".list-item")
+      .querySelector(".item-name").textContent;
+    const item = cartList.find((item) => item.name === itemName);
+    if (item) {
+      if (item.quantity > 1) {
+        item.quantity--;
+      } else {
+        cartList = cartList.filter((cartItem) => cartItem.name !== itemName);
+      }
+      buildUI();
+    }
+  }
 };
 const buildUI = () => {
   subtotal = 0;
@@ -96,15 +122,30 @@ const buildUI = () => {
     const cartItemPrice = document.createElement("p");
     const quantity = document.createElement("p");
     const removeButton = document.createElement("Button");
+    const quantityPlus = document.createElement("Button");
+    const quantityMinus = document.createElement("Button");
+    quantity.classList.add("quantity");
+    quantityPlus.classList.add("quantity-plus");
+    quantityMinus.classList.add("quantity-minus");
+    quantityPlus.textContent = "+";
+    quantityMinus.textContent = "-";
+
     cartItem.classList.add("item-name");
     cartDiv.classList.add("list-item");
-    cartDiv.append(cartItem, cartItemPrice, quantity, removeButton);
+    cartDiv.append(
+      cartItem,
+      cartItemPrice,
+      quantityMinus,
+      quantity,
+      quantityPlus,
+      removeButton
+    );
 
     quantity.textContent = item.quantity;
     console.log(item.quantity);
     cartItem.textContent = item.name;
     cartItemPrice.textContent = item.price;
-    removeButton.textContent = "Remove Item";
+    removeButton.textContent = "Remove";
     removeButton.classList.add("remove-item");
 
     cartItemList.append(cartDiv);

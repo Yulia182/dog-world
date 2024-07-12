@@ -50,16 +50,6 @@ header {
   gap: 20px;
 }
 
-/* .homesection img {
-  width: 200px;
-  border-radius: 15px;
-  transition: transform 0.3s;
-} */
-
-/* .homesection img:hover {
-  transform: scale(1.1);
-} */
-
 .products-container {
   display: flex;
   flex-direction: column;
@@ -188,6 +178,7 @@ h2 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Card payment container styles */
 .card-container i {
   margin: 0 15px;
   transform: scale(1.75);
@@ -214,17 +205,56 @@ h2 {
   justify-content: space-around;
 }
 
+.card-container input {
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.card-button {
+  margin-top: 10px;
+}
+
+/* Cash styles */
+.cash-container input {
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.quantity {
+  width: 15px;
+}
+
+.quantity-plus,
+.quantity-minus {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  background-color: #004d40;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 0 15px;
+}
+
+#sendCash,
+.view-receipt {
+  margin: 20px 0;
+  display: block;
+}
+
+/* item list styles */
 .list-item,
 .new-div {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #e0e0e0;
   padding: 20px 0;
-}
-
-.list-item p,
-.new-div p {
-  margin-right: 30px;
 }
 
 .item-name,
@@ -280,8 +310,6 @@ input {
 .invalid {
   border-color: red;
 }
-
-/* Card container styles */
 
 /* desktop styles */
 @media screen and (min-width: 768px) {
