@@ -18,7 +18,7 @@ body {
   line-height: 1.6em;
   margin-bottom: 50px;
   font-size: 14px;
-  background-image: linear-gradient(to bottom right, #e0f7fa, #b2ebf2);
+  background-image: linear-gradient(to bottom right, #a4d2dd, #e8fcff);
 }
 
 /* header styles */
@@ -30,6 +30,10 @@ header {
   background-color: #00796b;
   color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#logo {
+  width: 50px;
 }
 
 #num-of-items {
