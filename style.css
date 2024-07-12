@@ -18,7 +18,7 @@ body {
   line-height: 1.6em;
   margin-bottom: 50px;
   font-size: 14px;
-  background-image: linear-gradient(to bottom right, #a4d2dd, #e8fcff);
+  background-image: linear-gradient(to bottom right, #a6e8f8d8, #ebfcff);
 }
 
 /* header styles */
@@ -182,7 +182,34 @@ h2 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Card payment container styles */
+.quantity {
+  width: 15px;
+  text-align: center;
+}
+
+.quantity-plus,
+.quantity-minus {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  background-color: #004d40;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 0 7px;
+}
+
+.list-item p {
+  font-size: 13px;
+}
+
+.item-name {
+  margin-right: 5px;
+}
+
+/* card payment container styles */
 .card-container i {
   margin: 0 15px;
   transform: scale(1.75);
@@ -221,34 +248,7 @@ h2 {
   margin-top: 10px;
 }
 
-.quantity {
-  width: 15px;
-  text-align: center;
-}
-
-.quantity-plus,
-.quantity-minus {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  border: none;
-  background-color: #004d40;
-  color: white;
-  text-align: center;
-  font-size: 15px;
-  cursor: pointer;
-  margin: 0 7px;
-}
-
-.list-item p {
-  font-size: 13px;
-}
-
-.item-name {
-  margin-right: 5px;
-}
-
-/* Cash styles */
+/* cash styles */
 .cash-container input {
   padding: 10px;
   border-radius: 10px;

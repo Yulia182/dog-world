@@ -6,12 +6,14 @@ Welcome to the Dog Shop POS System! This application is designed to streamline t
 
 - [Features](#features)
 - [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
 - [Contributing](#contributing)
 
 ## Features
 
+- Mobile-first, responsive
 - Add items to the cart
-- Remove items from the cart
+- Shopping cart view with item management
 - View total price of items in the cart
 - Process payments via card or cash
 - View the receipt of your purchase
@@ -21,6 +23,28 @@ Welcome to the Dog Shop POS System! This application is designed to streamline t
 - HTML
 - CSS
 - JavaScript (DOM Manipulation)
+
+## Screenshots
+
+### Home Page
+
+![Home Page](assets/homepageView.PNG)
+_The home page displays a list of available products with options to add them to the cart._
+
+### Cart View
+
+![Cart View](assets/cartView.PNG)
+_The cart view shows the selected items, their quantities, and the total price. Users can update quantities or remove items._
+
+### Card Payment View
+
+![Card Payment View](assets/cardView.PNG)
+_The card payment view allows users to enter their card details to complete the transaction. We have used regex for card information validation. User can view the receipt._
+
+### Cash Payment View
+
+![Cash Payment View](assets/cashView.PNG)
+_The cash payment view provides an option for users to pay with cash, showing the amount due and the change to be returned. User can view the receipt._
 
 ## Contributing
 
