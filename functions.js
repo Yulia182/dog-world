@@ -158,7 +158,7 @@ export const printReceipt = () => {
     cartItems.classList.add("receipt-items");
     let itemPrice = document.createElement("p");
     quantityP.textContent = element.quantity;
-    itemPrice.textContent = "$" + element.price * element.quantity;
+    itemPrice.textContent = "$" + (element.price * element.quantity).toFixed(1);
     itemName.textContent = element.name;
     newDiv.append(itemName, itemPrice, quantityP);
     cartItems.append(newDiv);
