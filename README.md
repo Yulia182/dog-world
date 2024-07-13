@@ -2,6 +2,8 @@
 
 Welcome to the Dog Shop POS System! This application is designed to streamline the sales process in a dog shop, where you can sell dog clothes, treats, and other accessories. The system includes functionalities such as adding and removing items from a cart and processing payments via card or cash.
 
+The website is deployed with Netlify. You can find it here: <a href="https://dog-world.netlify.app/"></a>
+
 ## Table of Contents
 
 - [Features](#features)
